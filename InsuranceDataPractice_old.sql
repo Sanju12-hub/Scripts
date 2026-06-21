@@ -1,4 +1,5 @@
 
+
 /*
 -- Cleaning Regional Manager Table
 select * 
@@ -19,21 +20,6 @@ drop column column5, column6, column7, column8, column9, column10, column11, col
 select * from [dbo].[DM.Insurance_Agent_Table]
 alter table [dbo].[DM.Insurance_Agent_Table]
 drop column column5, column6, column7, column8, column9, column10, column11, column12;
-
--- Cleaned and Created Regional manager table states covered
-
-select * from [dbo].[DM_Regional_Manager_View]
-
-create or alter View DM_regional_Manager
-SELECT rm.[Regional_Manager_ID]
-      ,rm.[Regional_Manager_Name]
-      ,rm.[Mail]
-      ,rm.[Region]
-      ,trim(s.values) as States_Covered
-      ,rm.[Security]
-  FROM [InsuranceDB].[dbo].[DM.Regional_Manager] rm
-  cross apply string_split(rm.States_Covered,',') s;
-
 
 */
 
@@ -496,19 +482,16 @@ on fct.Policy_Type_Code = pt.Policy_Type_Code
 group by pt.Policy_Type
 
 -- 73.	Policy type with total policies.
---done but changes lost
+
 
 -- 74.	Policy type with claim count.
---done but changes lost
+
 
 -- 75.	Policy type with average tenure.
---done but changes lost
 
-
---________________________________________
---done but changes lost
-
-/* Fact + Policy Plan
+select 8 from [dbo].[DM_Regional_Manager_View]
+________________________________________
+Fact + Policy Plan
 76.	Policy plan with premium.
 77.	Policy plan performance.
 78.	Policy plan with highest claims.
@@ -521,7 +504,6 @@ Fact + Regional Manager
 83.	Regional manager active policies.
 84.	Regional manager claim summary.
 85.	Regional manager state performance.
-*/
 ________________________________________
 Multi-table Join
 86.	Customer + Agent + Policy Type.
